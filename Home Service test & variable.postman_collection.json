@@ -1,0 +1,3543 @@
+{
+	"info": {
+		"_postman_id": "8610b47b-aeea-43aa-9a07-832d549cc837",
+		"name": "Home Service test & variable",
+		"description": "# 🚀 Get started here\n\nThis template guides you through CRUD operations (GET, POST, PUT, DELETE), variables, and tests.\n\n## 🔖 **How to use this template**\n\n#### **Step 1: Send requests**\n\nRESTful APIs allow you to perform CRUD operations using the POST, GET, PUT, and DELETE HTTP methods.\n\nThis collection contains each of these [request](https://learning.postman.com/docs/sending-requests/requests/) types. Open each request and click \"Send\" to see what happens.\n\n#### **Step 2: View responses**\n\nObserve the response tab for status code (200 OK), response time, and size.\n\n#### **Step 3: Send new Body data**\n\nUpdate or add new data in \"Body\" in the POST request. Typically, Body data is also used in PUT request.\n\n```\n{\n    \"name\": \"Add your name in the body\"\n}\n\n ```\n\n#### **Step 4: Update the variable**\n\nVariables enable you to store and reuse values in Postman. We have created a [variable](https://learning.postman.com/docs/sending-requests/variables/) called `base_url` with the sample request [https://postman-api-learner.glitch.me](https://postman-api-learner.glitch.me). Replace it with your API endpoint to customize this collection.\n\n#### **Step 5: Add tests in the \"Scripts\" tab**\n\nAdding tests to your requests can help you confirm that your API is working as expected. You can write test scripts in JavaScript and view the output in the \"Test Results\" tab.\n\n<img src=\"https://content.pstmn.io/fa30ea0a-373d-4545-a668-e7b283cca343/aW1hZ2UucG5n\" width=\"2162\" height=\"1530\">\n\n## 💪 Pro tips\n\n- Use folders to group related requests and organize the collection.\n    \n- Add more [scripts](https://learning.postman.com/docs/writing-scripts/intro-to-scripts/) to verify if the API works as expected and execute workflows.\n    \n\n## 💡Related templates\n\n[API testing basics](https://go.postman.co/redirect/workspace?type=personal&collectionTemplateId=e9a37a28-055b-49cd-8c7e-97494a21eb54&sourceTemplateId=ddb19591-3097-41cf-82af-c84273e56719)  \n[API documentation](https://go.postman.co/redirect/workspace?type=personal&collectionTemplateId=e9c28f47-1253-44af-a2f3-20dce4da1f18&sourceTemplateId=ddb19591-3097-41cf-82af-c84273e56719)  \n[Authorization methods](https://go.postman.co/redirect/workspace?type=personal&collectionTemplateId=31a9a6ed-4cdf-4ced-984c-d12c9aec1c27&sourceTemplateId=ddb19591-3097-41cf-82af-c84273e56719)",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "39342988",
+		"_collection_link": "https://hsms-yy.postman.co/workspace/Team-Workspace~ca77ccd4-8f2e-45a2-8934-2582ef081b18/collection/39342988-8610b47b-aeea-43aa-9a07-832d549cc837?action=share&source=collection_link&creator=39342988"
+	},
+	"item": [
+		{
+			"name": "auth",
+			"item": [
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\" : \"yigoya8@gmail.com\",\n    \"password\": \"userpassword\",\n    \"FCMToken\" :\"dKB-Qr1oRlKZmcpB5bM7Ng:APA91bEDkEgF_hC8y6NgIFWBQ-Tq6w5dSp3ALhleFaPRQ2MDV_cwmP-YVQU2NHZ5y38H76kZrXfhVBRuquK7JLK8XgViuhQvaSpb3UkalYLo-TzsvceQpvg\",\n    \"deviceType\" : \"Samsung\",\n    \"deviceModel\" : \"M12\",\n    \"operatingSystem\" : \"ANDROID\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{local_url}}/auth/login"
+					},
+					"response": []
+				},
+				{
+					"name": "user register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"User Name\",\n    \"email\": \"user@example.com\",\n    \"phoneNumber\": \"+1234567890\",\n    \"password\": \"userpassword\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{local_url}}/auth/register"
+					},
+					"response": []
+				},
+				{
+					"name": "Password reset request",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\" : \"yigo\",\n    \"email\" : \"yigoya7@gmail.com\",\n    \"phoneNumber\" : \"0931770081\",\n    \"password\": \"12345678\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{local_url}}/auth/password-reset-request?email=yigoya3@gmail.com",
+							"host": [
+								"{{local_url}}"
+							],
+							"path": [
+								"auth",
+								"password-reset-request"
+							],
+							"query": [
+								{
+									"key": "email",
+									"value": "yigoya3@gmail.com"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Password reset",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"token\":\"fde5ccf3-d239-45f3-ba38-91cd95cee2f3\",\n    \"password\": \"87654321\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{local_url}}/auth/reset-password"
+					},
+					"response": []
+				},
+				{
+					"name": "Admin Login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\" : \"admin\",\n    \"password\": \"securePassword123\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{local_url}}/auth/admin/login"
+					},
+					"response": []
+				},
+				{
+					"name": "Technician Sign Up",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "Yisak Debebe",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "yigo3a@gmail.com",
+									"type": "text"
+								},
+								{
+									"key": "phoneNumber",
+									"value": "0912322122",
+									"type": "text"
+								},
+								{
+									"key": "profileImage",
+									"type": "file",
+									"src": "/home/yigo/Pictures/reference/Industrial-Maintenance-Mechanic-Technician-940x529.jpg"
+								},
+								{
+									"key": "bio",
+									"value": "People typically put this information on social media profiles, personal websites and company team directories to introduce themselves to potential employers, colleagues and clients. They can even use their short bio as an answer to one of the most common interview questions, \"Tell me about yourself.\" As a person's bio can reach recruiters and help them build their professional network, it's important to keep it accurate, informative and memorable.",
+									"type": "text"
+								},
+								{
+									"key": "availability",
+									"value": "yes",
+									"type": "text"
+								},
+								{
+									"key": "documents",
+									"type": "file",
+									"src": "postman-cloud:///1ef98510-2ad2-47d0-96e4-7c1583296d2a"
+								},
+								{
+									"key": "password",
+									"value": "12345678",
+									"type": "text"
+								},
+								{
+									"key": "serviceIds",
+									"value": "2",
+									"type": "text"
+								},
+								{
+									"key": "serviceIds",
+									"value": "1",
+									"contentType": "",
+									"type": "text"
+								},
+								{
+									"key": "idCardImage",
+									"type": "file",
+									"src": "postman-cloud:///1ef98511-f718-4140-9092-9c5099b36efd"
+								},
+								{
+									"key": "city",
+									"value": "Addis Abeba",
+									"type": "text"
+								},
+								{
+									"key": "subcity",
+									"value": "Bole",
+									"type": "text"
+								},
+								{
+									"key": "wereda",
+									"value": "01",
+									"type": "text"
+								}
+							]
+						},
+						"url": "{{local_url}}/auth/technician/signup"
+					},
+					"response": []
+				},
+				{
+					"name": "Operator Sign Up",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\" : \"yigoya7@gmail.com\",\n    \"password\": \"12345678\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{local_url}}/auth/operator/login"
+					},
+					"response": []
+				},
+				{
+					"name": "Tender agency registration",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"agency@example.com\",\n    \"password\": \"securepassword\",\n    \"contactPerson\": \"John Doe\",\n    \"phoneNumber\": \"123-456-7890\",\n    \"companyName\": \"Example Agency\",\n    \"tinNumber\": \"123456789\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{local_url}}/auth/operator/login"
+					},
+					"response": []
+				},
+				{
+					"name": "Operator Sign Up",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "tadios",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "yigoya33@gmail.com",
+									"type": "text"
+								},
+								{
+									"key": "phoneNumber",
+									"value": "0912322122",
+									"type": "text"
+								},
+								{
+									"key": "profileImage",
+									"type": "file",
+									"src": "postman-cloud:///1ef9850f-f138-4650-9756-cf3bec033981"
+								},
+								{
+									"key": "bio",
+									"value": "this is me",
+									"type": "text"
+								},
+								{
+									"key": "availability",
+									"value": "yes",
+									"type": "text"
+								},
+								{
+									"key": "documents",
+									"type": "file",
+									"src": "postman-cloud:///1ef9850f-f138-4650-9756-cf3bec033981"
+								},
+								{
+									"key": "password",
+									"value": "12345678",
+									"type": "text"
+								},
+								{
+									"key": "idCardImage",
+									"type": "file",
+									"src": "postman-cloud:///1ef9850f-f138-4650-9756-cf3bec033981"
+								}
+							]
+						},
+						"url": "{{local_url}}/auth/operator/signup"
+					},
+					"response": []
+				},
+				{
+					"name": "Customer Sign Up",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\" : \"Sedirak Gemal\",\n    \"email\" : \"yigoya7@gmail.com\",\n    \"phoneNumber\" : \"0931770081\",\n    \"password\": \"12345678\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{local_url}}/auth/customer/signup"
+					},
+					"response": []
+				},
+				{
+					"name": "upload proof",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "file",
+									"type": "file",
+									"src": "postman-cloud:///1ef98511-f718-4140-9092-9c5099b36efd"
+								},
+								{
+									"key": "technicianId",
+									"value": "4",
+									"type": "text"
+								}
+							]
+						},
+						"url": "{{local_url}}/auth/upload-proof"
+					},
+					"response": []
+				},
+				{
+					"name": "social-login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"idToken\" : \"eyJhbGciOiJSUzI1NiIsImtpZCI6IjkyODg2OGRjNDRlYTZhOThjODhiMzkzZDM2NDQ1MTM2NWViYjMwZDgiLCJ0eXAiOiJKV1QifQ.eyJwaWN0dXJlIjoiaHR0cHM6Ly9saDMuZ29vZ2xldXNlcmNvbnRlbnQuY29tL2EtL0FMVi1ValhPZFlYODhzOTV1a2lZSXcwcnBmYXNub2d4QWgxWGh0MTdVZXZYVF8xUWRGSGM5Zz1zOTYtYyIsImlzcyI6Imh0dHBzOi8vc2VjdXJldG9rZW4uZ29vZ2xlLmNvbS9ob21lLXNlcnZpY2UtOTJjNTIiLCJhdWQiOiJob21lLXNlcnZpY2UtOTJjNTIiLCJhdXRoX3RpbWUiOjE3MzI0NTUyMzcsInVzZXJfaWQiOiJhV1hrczNIbERzYmo2RXlrVXZOZzMxbElmUHgyIiwic3ViIjoiYVdYa3MzSGxEc2JqNkV5a1V2TmczMWxJZlB4MiIsImlhdCI6MTczMjQ1NTIzOSwiZXhwIjoxNzMyNDU4ODM5LCJlbWFpbCI6InlpZ295YTdAZ21haWwuY29tIiwiZW1haWxfdmVyaWZpZWQiOnRydWUsImZpcmViYXNlIjp7ImlkZW50aXRpZXMiOnsiZ29vZ2xlLmNvbSI6WyIxMTUyMDU4MjY4ODAxMDU4NTQwNzIiXSwiZW1haWwiOlsieWlnb3lhN0BnbWFpbC5jb20iXX0sInNpZ25faW5fcHJvdmlkZXIiOiJnb29nbGUuY29tIn19.Zej4BNw9fBu1ExL6jobGbz04hdqWMJA53bL1fTKGxtzzzJzWFDgi6h4RAmqyHGSBjBrQ_p6vMlhahcXKlZRAQlk5FF_p0Vzi174-vJ3KSgHso9ZVVC7OW5srWDFLknOGvnqVr07izcrA-qB7IEtOeXxx2yL5CWnqDy3-VHpF07APdg5RNUtJ3ga99ramne3ZnPfLAFIyTU8oTWJqR0MkGTF-VczEqvwixAiSGg\",\n    \"name\":\"yigermal abebe\",\n    \"email\" : \"yigoya7@gmail.com\",\n    \"provider\" : \"google\"\n\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{local_url}}/auth/social-login"
+					},
+					"response": []
+				},
+				{
+					"name": "test firebase",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "{{local_url}}/auth/test"
+					},
+					"response": []
+				},
+				{
+					"name": "list firebase users",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "{{local_url}}/auth/list-users"
+					},
+					"response": []
+				},
+				{
+					"name": "Suspend",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\" : \"yigo\",\n    \"email\" : \"yigoya7@gmail.com\",\n    \"phoneNumber\" : \"0931770081\",\n    \"password\": \"12345678\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{local_url}}/auth/suspend/1"
+					},
+					"response": []
+				},
+				{
+					"name": "Delete",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\" : \"yigo\",\n    \"email\" : \"yigoya7@gmail.com\",\n    \"phoneNumber\" : \"0931770081\",\n    \"password\": \"12345678\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{local_url}}/auth/delete/1"
+					},
+					"response": []
+				},
+				{
+					"name": "verify technician",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{local_url}}/auth/verify?token=edkfq9wiu4n082349uq3-n",
+							"host": [
+								"{{local_url}}"
+							],
+							"path": [
+								"auth",
+								"verify"
+							],
+							"query": [
+								{
+									"key": "token",
+									"value": "edkfq9wiu4n082349uq3-n"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "New Request",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"to\": \"+251931770081\",\n  \"message\": \"Hello there\"\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{local_url}}/auth/send-sms"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "service managment",
+			"item": [
+				{
+					"name": "create booking",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"customerId\": null,\n    \"technicianId\": 1,\n    \"serviceId\": 1,\n    \"status\": \"PENDING\",\n    \"serviceLocation\": {\n        \"street\": \"123 Main St\",\n        \"city\": \"Anytown\",\n        \"state\": \"CA\",\n        \"zipCode\": \"12345\"\n    },\n    \"totalCost\": 100.0\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{local_url}}/bookings"
+					},
+					"response": []
+				},
+				{
+					"name": "getServiceById",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{local_url}}/services/4",
+							"host": [
+								"{{local_url}}"
+							],
+							"path": [
+								"services",
+								"4"
+							],
+							"query": [
+								{
+									"key": "lang",
+									"value": "AMHARIC",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get services",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{local_url}}/services?lang=AMHARIC",
+							"host": [
+								"{{local_url}}"
+							],
+							"path": [
+								"services"
+							],
+							"query": [
+								{
+									"key": "lang",
+									"value": "AMHARIC"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "technicians",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "{{local_url}}/technicians"
+					},
+					"response": []
+				},
+				{
+					"name": "get technicians by id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "{{local_url}}/technicians/2"
+					},
+					"response": []
+				},
+				{
+					"name": "set service price",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"technicianId\": 2,\n    \"serviceId\": 2,\n    \"price\": -200.0\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{local_url}}/set-service-price"
+					},
+					"response": []
+				},
+				{
+					"name": "contact us",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"John Doe\",\n    \"email\": \"john.doe@example.com\",\n    \"phoneNumber\": \"1234567890\",\n    \"message\": \"I would like to know more about your services.\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{local_url}}/contact-us"
+					},
+					"response": []
+				},
+				{
+					"name": "dispute",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"bookingId\": 1,\n    \"title\": \"Service Issue\",\n    \"description\": \"I had an issue with the service provided.\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{local_url}}/dispute"
+					},
+					"response": []
+				},
+				{
+					"name": "service catagories",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{local_url}}/service-categories?lang=AMHARIC",
+							"host": [
+								"{{local_url}}"
+							],
+							"path": [
+								"service-categories"
+							],
+							"query": [
+								{
+									"key": "lang",
+									"value": "AMHARIC"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get catagory services",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{local_url}}/service-categories/1?lang=AMHARIC",
+							"host": [
+								"{{local_url}}"
+							],
+							"path": [
+								"service-categories",
+								"1"
+							],
+							"query": [
+								{
+									"key": "lang",
+									"value": "AMHARIC"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "customer disputes",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "{{local_url}}/disputes/customer/1"
+					},
+					"response": []
+				},
+				{
+					"name": "home",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{local_url}}/home?lang=AMHARIC",
+							"host": [
+								"{{local_url}}"
+							],
+							"path": [
+								"home"
+							],
+							"query": [
+								{
+									"key": "lang",
+									"value": "AMHARIC"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "districts",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{local_url}}/districts?language=english",
+							"host": [
+								"{{local_url}}"
+							],
+							"path": [
+								"districts"
+							],
+							"query": [
+								{
+									"key": "language",
+									"value": "english"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "search",
+			"item": [
+				{
+					"name": "search technician by service",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "{{local_url}}/search/service/9"
+					},
+					"response": []
+				},
+				{
+					"name": "filter technician",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{local_url}}/search/technicians/4?subcity=Akaki",
+							"host": [
+								"{{local_url}}"
+							],
+							"path": [
+								"search",
+								"technicians",
+								"4"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "danial",
+									"disabled": true
+								},
+								{
+									"key": "city",
+									"value": "addis",
+									"disabled": true
+								},
+								{
+									"key": "minLatitude",
+									"value": "",
+									"disabled": true
+								},
+								{
+									"key": "maxLatitude",
+									"value": "",
+									"disabled": true
+								},
+								{
+									"key": "minLongitude",
+									"value": "",
+									"disabled": true
+								},
+								{
+									"key": "maxLongitude",
+									"value": "",
+									"disabled": true
+								},
+								{
+									"key": "minPrice",
+									"value": "200",
+									"disabled": true
+								},
+								{
+									"key": "maxPrice",
+									"value": "",
+									"disabled": true
+								},
+								{
+									"key": "subcity",
+									"value": "Akaki"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "search technician by service with schedule",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{local_url}}/search/service-schedule/4?date=2024-11-28&time=09:30&page=0&size=9",
+							"host": [
+								"{{local_url}}"
+							],
+							"path": [
+								"search",
+								"service-schedule",
+								"4"
+							],
+							"query": [
+								{
+									"key": "date",
+									"value": "2024-11-28"
+								},
+								{
+									"key": "time",
+									"value": "09:30"
+								},
+								{
+									"key": "page",
+									"value": "0"
+								},
+								{
+									"key": "size",
+									"value": "9"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "filter technician with schedule",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{local_url}}/search/technicians-schedule?subCity=Bole&page=0&size=9&time=21:34&date=2024-11-30",
+							"host": [
+								"{{local_url}}"
+							],
+							"path": [
+								"search",
+								"technicians-schedule"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "d",
+									"disabled": true
+								},
+								{
+									"key": "city",
+									"value": "addis",
+									"disabled": true
+								},
+								{
+									"key": "subCity",
+									"value": "Bole"
+								},
+								{
+									"key": "minLatitude",
+									"value": "",
+									"disabled": true
+								},
+								{
+									"key": "maxLatitude",
+									"value": "",
+									"disabled": true
+								},
+								{
+									"key": "minLongitude",
+									"value": "",
+									"disabled": true
+								},
+								{
+									"key": "maxLongitude",
+									"value": "",
+									"disabled": true
+								},
+								{
+									"key": "minPrice",
+									"value": "200",
+									"disabled": true
+								},
+								{
+									"key": "maxPrice",
+									"value": "32",
+									"disabled": true
+								},
+								{
+									"key": "page",
+									"value": "0"
+								},
+								{
+									"key": "size",
+									"value": "9"
+								},
+								{
+									"key": "time",
+									"value": "21:34"
+								},
+								{
+									"key": "serviceId",
+									"value": "4",
+									"disabled": true
+								},
+								{
+									"key": "date",
+									"value": "2024-11-30"
+								},
+								{
+									"key": "wereda",
+									"value": "01",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "service questions",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "{{local_url}}/search/question/4"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Booking",
+			"item": [
+				{
+					"name": "book request",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"customerId\": 1,\n  \"technicianId\": 15,\n  \"serviceId\": 4,\n  \"description\": \"bitch Need assistance with air conditioning repair.\",\n  \"scheduledDate\": \"2024-11-22T14:30:00\",\n  \"street\": \"123 Elm Street\",\n  \"city\": \"Addis Ababa\",\n  \"subcity\": \"Akaki\",\n  \"wereda\": \"04\",\n  \"state\": \"Addis Ababa\",\n  \"country\": \"Ethiopia\",\n  \"zipCode\": \"1000\",\n  \"latitude\": 9.03,\n  \"longitude\": 38.74,\n  \"timeSchedule\": \"Afternoon\"\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{local_url}}/booking/request"
+					},
+					"response": []
+				},
+				{
+					"name": "get customer booking",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": "{{local_url}}/booking/customer/3"
+					},
+					"response": []
+				},
+				{
+					"name": "get technician booking",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "{{local_url}}/booking/technician/3"
+					},
+					"response": []
+				},
+				{
+					"name": "update booking status",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"bookingId\": 22,\n    \"status\" : \"COMPLETED\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{local_url}}/booking/update-status"
+					},
+					"response": []
+				},
+				{
+					"name": "update booking",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"scheduledDate\": \"2024-11-15T10:00:00\",\n  \"description\" : \"refers to a central character from the Book of Job, depicted as a righteous and prosperous man who endures immense suffering and loss, testing his unwavering faith in God\",\n  \"street\": \"456 Maple Street\",\n  \"city\": \"Addis Ababa\",\n  \"subcity\": \"Gullele\",\n  \"wereda\": \"03\",\n  \"state\": \"Addis Ababa\",\n  \"country\": \"Ethiopia\",\n  \"zipCode\": \"1000\",\n  \"latitude\": 9.05,\n  \"longitude\": 38.75,\n  \"timeSchedule\": \"Morning\",\n  \"status\": \"PENDING\",\n  \"totalCost\" : 1200\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{local_url}}/booking/5"
+					},
+					"response": []
+				},
+				{
+					"name": "all questions",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "{{local_url}}/booking/questions"
+					},
+					"response": []
+				},
+				{
+					"name": "submit answer",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"bookingId\": 7,\n    \"customerId\": 8,\n    \"answers\": [\n        {\n            \"questionId\": 1,\n            \"response\": \"Afternoon\"\n        },\n        {\n            \"questionId\": 2,\n            \"response\": \"The air conditioner is not cooling properly.\"\n        }\n    ]\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{local_url}}/booking/answer"
+					},
+					"response": []
+				},
+				{
+					"name": "answers for booking",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{local_url}}/booking/answers?bookingId=15&customerId=8",
+							"host": [
+								"{{local_url}}"
+							],
+							"path": [
+								"booking",
+								"answers"
+							],
+							"query": [
+								{
+									"key": "bookingId",
+									"value": "15"
+								},
+								{
+									"key": "customerId",
+									"value": "8"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "single booking",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "{{local_url}}/bookings/38"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Review",
+			"item": [
+				{
+					"name": "create review",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"bookingId\":5\n    ,\n    \"rating\":4,\n    \"review\":\"this is review for sevice\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{local_url}}/review"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Profile",
+			"item": [
+				{
+					"name": "technician profile",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "{{local_url}}/profile/technician/15"
+					},
+					"response": []
+				},
+				{
+					"name": "customer profile",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "{{local_url}}/profile/customer/1"
+					},
+					"response": []
+				},
+				{
+					"name": "update customer profile",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"John Doe\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{local_url}}/profile/customer/1"
+					},
+					"response": []
+				},
+				{
+					"name": "update technician profile",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"John Doe\",\n    \"email\": \"johndoe@example.com\",\n    \"phoneNumber\": \"123456789\",\n    \"bio\": \"Updated bio for the technician\"\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{local_url}}/profile/technician/1"
+					},
+					"response": []
+				},
+				{
+					"name": "set schedule",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"mondayStart\": \"09:00\",\n  \"mondayEnd\": \"17:00\",\n  \"tuesdayStart\": \"09:00\",\n  \"tuesdayEnd\": \"17:00\",\n  \"wednesdayStart\": \"09:00\",\n  \"wednesdayEnd\": \"17:00\",\n  \"thursdayStart\": \"09:00\",\n  \"thursdayEnd\": \"17:00\",\n  \"fridayStart\": \"09:00\",\n  \"fridayEnd\": \"17:00\",\n  \"saturdayStart\": null,\n  \"saturdayEnd\": null,\n  \"sundayStart\": null,\n  \"sundayEnd\": null\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{local_url}}/profile/technician/15/weekly-schedule"
+					},
+					"response": []
+				},
+				{
+					"name": "profile",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "file",
+									"type": "file",
+									"src": "postman-cloud:///1ef9850f-f138-4650-9756-cf3bec033981"
+								}
+							]
+						},
+						"url": "{{local_url}}/profile/uploadProfileImage/2"
+					},
+					"response": []
+				},
+				{
+					"name": "schedule",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "{{local_url}}/profile/technician/schedule/2"
+					},
+					"response": []
+				},
+				{
+					"name": "set preferred language",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"preferredLanguage\": \"AMHARIC\"\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{local_url}}/profile/1/preferred-language"
+					},
+					"response": []
+				},
+				{
+					"name": "change contact",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"userId\":1,\n    \"newEmail\":\"yoniashenafi22@gmail.com\",\n    \"newPhoneNumber\": \"0923495932\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{local_url}}/profile/change-contact"
+					},
+					"response": []
+				},
+				{
+					"name": "is technician active",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "{{local_url}}/profile/15/active"
+					},
+					"response": []
+				},
+				{
+					"name": "get customer address",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "{{local_url}}/profile/customer/1/addresses"
+					},
+					"response": []
+				},
+				{
+					"name": "get technician address",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "{{local_url}}/profile/technician/1/addresses"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "admin",
+			"item": [
+				{
+					"name": "suspend",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\" : \"yigo\",\n    \"email\" : \"yigoya7@gmail.com\",\n    \"phoneNumber\" : \"0931770081\",\n    \"password\": \"12345678\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{local_url}}/admin/suspend/1"
+					},
+					"response": []
+				},
+				{
+					"name": "delete",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\" : \"yigo\",\n    \"email\" : \"yigoya7@gmail.com\",\n    \"phoneNumber\" : \"0931770081\",\n    \"password\": \"12345678\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{local_url}}/admin/delete/1"
+					},
+					"response": []
+				},
+				{
+					"name": "review proof",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "{{local_url}}/admin/review-proof/20?approve=true",
+							"host": [
+								"{{local_url}}"
+							],
+							"path": [
+								"admin",
+								"review-proof",
+								"20"
+							],
+							"query": [
+								{
+									"key": "approve",
+									"value": "true"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "pending proofs",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "{{local_url}}/admin/pending-proofs"
+					},
+					"response": []
+				},
+				{
+					"name": "technician unverified",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "{{local_url}}/admin/unverified-technicians"
+					},
+					"response": []
+				},
+				{
+					"name": "technician unverified by id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "{{local_url}}/admin/unverified-technicians/18"
+					},
+					"response": []
+				},
+				{
+					"name": "verify technician",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "{{local_url}}/admin/technicians/verify/15"
+					},
+					"response": []
+				},
+				{
+					"name": "disputes",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{local_url}}/admin/disputes",
+							"host": [
+								"{{local_url}}"
+							],
+							"path": [
+								"admin",
+								"disputes"
+							],
+							"query": [
+								{
+									"key": "status",
+									"value": "RESOLVED",
+									"disabled": true
+								},
+								{
+									"key": "customerName",
+									"value": "yi",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update dispute status",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "{{local_url}}/admin/disputes/2?status=RESOLVED",
+							"host": [
+								"{{local_url}}"
+							],
+							"path": [
+								"admin",
+								"disputes",
+								"2"
+							],
+							"query": [
+								{
+									"key": "status",
+									"value": "RESOLVED"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create service",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "Laundry On Demand",
+									"type": "text"
+								},
+								{
+									"key": "categoryId",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "serviceFee",
+									"value": "20",
+									"type": "text"
+								},
+								{
+									"key": "estimatedDuration",
+									"value": "02:30",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "On-demand laundry services with pickup and delivery, offering convenience and high-quality cleaning for your clothes.",
+									"type": "text"
+								},
+								{
+									"key": "lang",
+									"value": "ENGLISH",
+									"type": "text"
+								},
+								{
+									"key": "icon",
+									"type": "file",
+									"src": "postman-cloud:///1efbf66c-bd04-4c50-a75f-67326770509a"
+								},
+								{
+									"key": "serviceId",
+									"value": "7",
+									"type": "text"
+								}
+							]
+						},
+						"url": "{{local_url}}/admin/services"
+					},
+					"response": []
+				},
+				{
+					"name": "create service catagory",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "Emergency",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "Services designed to assist with property transactions, relocations, and living arrangements.",
+									"type": "text"
+								},
+								{
+									"key": "lang",
+									"value": "ENGLISH",
+									"type": "text"
+								},
+								{
+									"key": "icon",
+									"type": "file",
+									"src": "postman-cloud:///1efbf66c-bd04-4c50-a75f-67326770509a"
+								},
+								{
+									"key": "isMobileCategory",
+									"value": "true",
+									"type": "text"
+								}
+							]
+						},
+						"url": "{{local_url}}/admin/service-categories"
+					},
+					"response": []
+				},
+				{
+					"name": "update service catagory",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "Personal",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "Support services for home management, care, and convenience, tailored to your daily living needs.",
+									"type": "text"
+								},
+								{
+									"key": "lang",
+									"value": "ENGLISH",
+									"type": "text"
+								},
+								{
+									"key": "icon",
+									"type": "file",
+									"src": "/home/ricky/Downloads/personalized.png"
+								},
+								{
+									"key": "isMobileCategory",
+									"value": "true",
+									"type": "text"
+								}
+							]
+						},
+						"url": "{{local_url}}/admin/service-categories/19"
+					},
+					"response": []
+				},
+				{
+					"name": "update service",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "Cooler Repair",
+									"type": "text"
+								},
+								{
+									"key": "categoryId",
+									"value": "3",
+									"type": "text"
+								},
+								{
+									"key": "serviceFee",
+									"value": "20",
+									"type": "text"
+								},
+								{
+									"key": "estimatedDuration",
+									"value": "02:30",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "Comprehensive repair services for air coolers, ensuring optimal cooling performance and energy efficiency. Services include motor repair, fan blade replacement, water pump repair, and general maintenance.",
+									"type": "text"
+								},
+								{
+									"key": "lang",
+									"value": "ENGLISH",
+									"type": "text"
+								},
+								{
+									"key": "icon",
+									"type": "file",
+									"src": "postman-cloud:///1efbf66c-bd04-4c50-a75f-67326770509a"
+								}
+							]
+						},
+						"url": "{{local_url}}/admin/services/4"
+					},
+					"response": []
+				},
+				{
+					"name": "add service language",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"ልብስ ማጠቢያ ጥገና\",\n    \"description\": \"ሁሉንም ዓይነት ቴሌቪዥኖችን መጠገን\",\n    \"lang\": \"AMHARIC\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{local_url}}/admin/services/3/language"
+					},
+					"response": []
+				},
+				{
+					"name": "add service catagory language",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"መጠገኛ ክፍል\",\n    \"description\": \"የመጠገኛ ክፍል መግለጫ\",\n    \"lang\": \"AMHARIC\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{local_url}}/admin/service-categories/1/language"
+					},
+					"response": []
+				},
+				{
+					"name": "customers",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ5aWdveWEwOEBnbWFpbC5jb20iLCJpYXQiOjE3MzIxMDQ4OTUsImV4cCI6MTczMjE0MDg5NX0.P4oHun-LIPKHjkwB7vvvvgjgqWMUgs9-zOV0vtsUptY"
+							}
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{local_url}}/admin/customers?page=0&size=10",
+							"host": [
+								"{{local_url}}"
+							],
+							"path": [
+								"admin",
+								"customers"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "0"
+								},
+								{
+									"key": "size",
+									"value": "10"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete customer",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": "{{local_url}}/admin/customer/1"
+					},
+					"response": []
+				},
+				{
+					"name": "delete technician",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": "{{local_url}}/admin/technician/1"
+					},
+					"response": []
+				},
+				{
+					"name": "technicians",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{local_url}}/admin/technicians?page=0&size=10",
+							"host": [
+								"{{local_url}}"
+							],
+							"path": [
+								"admin",
+								"technicians"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "0"
+								},
+								{
+									"key": "size",
+									"value": "10"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete service",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": "{{local_url}}/admin/service/8"
+					},
+					"response": []
+				},
+				{
+					"name": "operators",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{local_url}}/admin/operators?page=0&size=10",
+							"host": [
+								"{{local_url}}"
+							],
+							"path": [
+								"admin",
+								"operators"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "0"
+								},
+								{
+									"key": "size",
+									"value": "10"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete operator",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": "{{local_url}}/admin/operator/1"
+					},
+					"response": []
+				},
+				{
+					"name": "decline technician",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "{{local_url}}/admin/technicians/decline/8"
+					},
+					"response": []
+				},
+				{
+					"name": "add question",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"text\": \"What is your preferred service Time?\",\n    \"type\": \"INPUTE\",\n    \"options\": [\"Morning\", \"Afternoon\", \"Evening\"],\n    \"serviceIds\": [4, 5]\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{local_url}}/admin/question"
+					},
+					"response": []
+				},
+				{
+					"name": "service list",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{local_url}}/admin/services?lang=AMHARIC",
+							"host": [
+								"{{local_url}}"
+							],
+							"path": [
+								"admin",
+								"services"
+							],
+							"query": [
+								{
+									"key": "lang",
+									"value": "AMHARIC"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "technicians",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{local_url}}/admin/technicians",
+							"host": [
+								"{{local_url}}"
+							],
+							"path": [
+								"admin",
+								"technicians"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "da",
+									"disabled": true
+								},
+								{
+									"key": "page",
+									"value": "1",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "customers",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{local_url}}/admin/customers?page=0&size=10",
+							"host": [
+								"{{local_url}}"
+							],
+							"path": [
+								"admin",
+								"customers"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "yig",
+									"disabled": true
+								},
+								{
+									"key": "page",
+									"value": "0"
+								},
+								{
+									"key": "size",
+									"value": "10"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "booking",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ5aWdveWEwOEBnbWFpbC5jb20iLCJpYXQiOjE3MzIxMDQ4OTUsImV4cCI6MTczMjE0MDg5NX0.P4oHun-LIPKHjkwB7vvvvgjgqWMUgs9-zOV0vtsUptY"
+							}
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{local_url}}/admin/bookings",
+							"host": [
+								"{{local_url}}"
+							],
+							"path": [
+								"admin",
+								"bookings"
+							],
+							"query": [
+								{
+									"key": "service",
+									"value": "Television For a Great",
+									"disabled": true
+								},
+								{
+									"key": "status",
+									"value": "COMPLETED",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "service from excel",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "file",
+									"type": "file",
+									"src": "/home/ricky/Downloads/Untitled spreadsheet(1).xlsx"
+								}
+							]
+						},
+						"url": "{{local_url}}/admin/services/upload"
+					},
+					"response": []
+				},
+				{
+					"name": "import services",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "file",
+									"type": "file",
+									"src": "/home/yigo/Documents/Hulumoya/datas2.xlsx"
+								}
+							]
+						},
+						"url": "{{local_url}}/admin/import"
+					},
+					"response": []
+				},
+				{
+					"name": "databaseResetService",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "icons",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "notification",
+			"item": [
+				{
+					"name": "unread",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "{{local_url}}/notifications/unread/3"
+					},
+					"response": []
+				},
+				{
+					"name": "fcm send",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"userId\": 23,\n    \"title\": \"Hello!\",\n    \"body\": \"This is a test notification.\",\n    \"imageUrl\" : \"https://gratisography.com/wp-content/uploads/2024/11/gratisography-augmented-reality-800x525.jpg\",\n    \"targetPage\" : \"profile\"\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{local_url}}/notifications/fcm-send"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Payment",
+			"item": [
+				{
+					"name": "initialize",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"bankCode\": \"946\",\n    \"accountNumber\": \"1000475236185\",\n    \"amount\": 100,\n    \"email\": \"yigoya7@gmail.com\",\n    \"firstName\": \"Abebe\",\n    \"lastName\": \"Bikila\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{local_url}}/payment/initialize"
+					},
+					"response": []
+				},
+				{
+					"name": "banks",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"bankCode\": \"946\",\n    \"accountNumber\": \"1000475236185\",\n    \"amount\": 100,\n    \"email\": \"yigoya7@gmail.com\",\n    \"firstName\": \"Abebe\",\n    \"lastName\": \"Bikila\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{local_url}}/payment/banks"
+					},
+					"response": []
+				},
+				{
+					"name": "Subscription Plan",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{local_url}}/subscriptions/plans?planType=TECHNICIAN",
+							"host": [
+								"{{local_url}}"
+							],
+							"path": [
+								"subscriptions",
+								"plans"
+							],
+							"query": [
+								{
+									"key": "planType",
+									"value": "TECHNICIAN"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Technician Subscription",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "{{local_url}}/subscriptions/technician/1"
+					},
+					"response": []
+				},
+				{
+					"name": "Create Technician Subscription",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"planId\": 1}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{local_url}}/subscriptions/technician/1"
+					},
+					"response": []
+				},
+				{
+					"name": "Update Technician Subscription",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"planId\": 1}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{local_url}}/subscriptions/technician/1"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Tender",
+			"item": [
+				{
+					"name": "add tender",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "title",
+									"value": "Road  and Revalue",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "New project",
+									"type": "text"
+								},
+								{
+									"key": "location",
+									"value": "Addis Ababa",
+									"type": "text"
+								},
+								{
+									"key": "closingDate",
+									"value": "2025-12-31T23:59:59",
+									"type": "text"
+								},
+								{
+									"key": "contactInfo",
+									"value": "contact@example.com",
+									"type": "text"
+								},
+								{
+									"key": "status",
+									"value": "OPEN",
+									"type": "text"
+								},
+								{
+									"key": "categoryId",
+									"value": "4",
+									"type": "text"
+								},
+								{
+									"key": "file",
+									"type": "file",
+									"src": "postman-cloud:///1efe9096-3c53-4220-b7aa-3d39d1a25f6c"
+								}
+							]
+						},
+						"url": "{{local_url}}/tenders"
+					},
+					"response": []
+				},
+				{
+					"name": "all tenders",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "{{local_url}}/tenders"
+					},
+					"response": []
+				},
+				{
+					"name": "by service",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "{{local_url}}/tenders/category/1"
+					},
+					"response": []
+				},
+				{
+					"name": "by status",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{local_url}}/tenders/status?status=CLOSED",
+							"host": [
+								"{{local_url}}"
+							],
+							"path": [
+								"tenders",
+								"status"
+							],
+							"query": [
+								{
+									"key": "status",
+									"value": "CLOSED"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "change status",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "{{local_url}}/tenders/1/status?status=CLOSED",
+							"host": [
+								"{{local_url}}"
+							],
+							"path": [
+								"tenders",
+								"1",
+								"status"
+							],
+							"query": [
+								{
+									"key": "status",
+									"value": "CLOSED"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "single tender",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "{{local_url}}/tenders/1"
+					},
+					"response": []
+				},
+				{
+					"name": "add service",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "Laundry On Demand",
+									"type": "text"
+								},
+								{
+									"key": "categoryId",
+									"value": "4",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "serviceFee",
+									"value": "20",
+									"type": "text"
+								},
+								{
+									"key": "estimatedDuration",
+									"value": "02:30",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "On-demand laundry services with pickup and delivery, offering convenience and high-quality cleaning for your clothes.",
+									"type": "text"
+								},
+								{
+									"key": "lang",
+									"value": "ENGLISH",
+									"type": "text"
+								},
+								{
+									"key": "icon",
+									"type": "file",
+									"src": "postman-cloud:///1efbf66c-bd04-4c50-a75f-67326770509a"
+								},
+								{
+									"key": "serviceId",
+									"value": "16",
+									"type": "text"
+								}
+							]
+						},
+						"url": "{{local_url}}/tenders/add-service"
+					},
+					"response": []
+				},
+				{
+					"name": "by location and service",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{local_url}}/tenders/location-service?location=Addis Ababa&serviceId=13",
+							"host": [
+								"{{local_url}}"
+							],
+							"path": [
+								"tenders",
+								"location-service"
+							],
+							"query": [
+								{
+									"key": "location",
+									"value": "Addis Ababa"
+								},
+								{
+									"key": "serviceId",
+									"value": "13"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "by location",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{local_url}}/tenders/location?location=Addis Ababa",
+							"host": [
+								"{{local_url}}"
+							],
+							"path": [
+								"tenders",
+								"location"
+							],
+							"query": [
+								{
+									"key": "location",
+									"value": "Addis Ababa"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "search",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var template = `",
+									"<style type=\"text/css\">",
+									"    .tftable {font-size:14px;color:#333333;width:100%;border-width: 1px;border-color: #87ceeb;border-collapse: collapse;}",
+									"    .tftable th {font-size:18px;background-color:#87ceeb;border-width: 1px;padding: 8px;border-style: solid;border-color: #87ceeb;text-align:left;}",
+									"    .tftable tr {background-color:#ffffff;}",
+									"    .tftable td {font-size:14px;border-width: 1px;padding: 8px;border-style: solid;border-color: #87ceeb;}",
+									"    .tftable tr:hover {background-color:#e0ffff;}",
+									"</style>",
+									"",
+									"<table class=\"tftable\" border=\"1\">",
+									"    <tr>",
+									"        <th>Page Number</th>",
+									"        <th>Page Size</th>",
+									"        <th>Total Elements</th>",
+									"        <th>Total Pages</th>",
+									"        <th>Last</th>",
+									"        <th>First</th>",
+									"        <th>Number</th>",
+									"        <th>Number Of Elements</th>",
+									"    </tr>",
+									"    <tr>",
+									"        <td>{{response.pageable.pageNumber}}</td>",
+									"        <td>{{response.pageable.pageSize}}</td>",
+									"        <td>{{response.totalElements}}</td>",
+									"        <td>{{response.totalPages}}</td>",
+									"        <td>{{response.last}}</td>",
+									"        <td>{{response.first}}</td>",
+									"        <td>{{response.number}}</td>",
+									"        <td>{{response.numberOfElements}}</td>",
+									"    </tr>",
+									"</table>",
+									"`;",
+									"",
+									"function constructVisualizerPayload() {",
+									"    return {response: pm.response.json()}",
+									"}",
+									"",
+									"pm.visualizer.set(template, constructVisualizerPayload());"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"keyword\": null,\n    \"status\": \"OPEN\",\n    \"location\": null,\n    \"serviceId\": null,\n    \"datePosted\": null,\n    \"closingDate\": null,\n    \"page\": 0,\n    \"size\": 10\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{local_url}}/tenders/search"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Business",
+			"item": [
+				{
+					"name": "Create Business",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "Coffee Haven",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "A cozy coffee shop with premium blends.",
+									"type": "text"
+								},
+								{
+									"key": "ownerId",
+									"value": "4",
+									"type": "text"
+								},
+								{
+									"key": "categoryIds",
+									"value": "[337, 1]",
+									"type": "text"
+								},
+								{
+									"key": "location",
+									"value": "{\n    \"name\":\"Bole\",\n    \"latitude\": 9.03,\n    \"longitude\": 38.74,\n    \"street\": \"123 Main St\",\n    \"city\": \"Addis Ababa\",\n    \"state\": \"Addis Ababa\",\n    \"postalCode\": \"1000\",\n    \"country\": \"Ethiopia\"\n  },",
+									"type": "text"
+								},
+								{
+									"key": "\"phoneNumber\"",
+									"value": " \"+251912345678\",",
+									"type": "text"
+								},
+								{
+									"key": "\"email\"",
+									"value": " \"contact@coffeehaven.com\",",
+									"type": "text"
+								},
+								{
+									"key": "\"website\"",
+									"value": " \"https://coffeehaven.com\",",
+									"type": "text"
+								},
+								{
+									"key": "\"openingHours\"",
+									"value": "{\n    \"mondayOpen\": \"08:00\",\n    \"mondayClose\": \"18:00\",\n    \"tuesdayOpen\": \"08:00\",\n    \"tuesdayClose\": \"18:00\",\n    \"wednesdayOpen\": \"08:00\",\n    \"wednesdayClose\": \"18:00\",\n    \"thursdayOpen\": \"08:00\",\n    \"thursdayClose\": \"18:00\",\n    \"fridayOpen\": \"08:00\",\n    \"fridayClose\": \"20:00\",\n    \"saturdayOpen\": \"09:00\",\n    \"saturdayClose\": \"20:00\",\n    \"sundayOpen\": \"09:00\",\n    \"sundayClose\": \"16:00\"\n  }",
+									"type": "text"
+								},
+								{
+									"key": "socialMedia",
+									"value": "{\n    \"facebook\": \"facebook.com/coffeehaven\",\n    \"twitter\": \"twitter.com/coffeehaven\",\n    \"instagram\": \"instagram.com/coffeehaven\",\n    \"linkedin\": null\n  }",
+									"type": "text"
+								},
+								{
+									"key": "images",
+									"type": "file",
+									"src": "postman-cloud:///1f000d11-c05e-4a80-9e22-1244b2cdd11f"
+								},
+								{
+									"key": "isVerified",
+									"value": "true,",
+									"type": "text"
+								},
+								{
+									"key": "isFeatured",
+									"value": "false",
+									"type": "text"
+								}
+							]
+						},
+						"url": "{{local_url}}/businesses"
+					},
+					"response": []
+				},
+				{
+					"name": "Update Business",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"Coffee Haven Go\",\n  \"description\": \"A cozy coffee shop with premium blends.\",\n  \"ownerId\": 1,\n  \"categoryIds\": [2, 1],\n  \"location\": {\n    \"name\":\"Bole\",\n    \"latitude\": 9.03,\n    \"longitude\": 38.74,\n    \"street\": \"123 Main St\",\n    \"city\": \"Addis Ababa\",\n    \"state\": \"Addis Ababa\",\n    \"postalCode\": \"1000\",\n    \"country\": \"Ethiopia\"\n  },\n  \"phoneNumber\": \"+251912345678\",\n  \"email\": \"contact@coffeehaven.com\",\n  \"website\": \"https://coffeehaven.com\",\n  \"openingHours\": {\n    \"mondayOpen\": \"08:00\",\n    \"mondayClose\": \"18:00\",\n    \"tuesdayOpen\": \"08:00\",\n    \"tuesdayClose\": \"18:00\",\n    \"wednesdayOpen\": \"08:00\",\n    \"wednesdayClose\": \"18:00\",\n    \"thursdayOpen\": \"08:00\",\n    \"thursdayClose\": \"18:00\",\n    \"fridayOpen\": \"08:00\",\n    \"fridayClose\": \"20:00\",\n    \"saturdayOpen\": \"09:00\",\n    \"saturdayClose\": \"20:00\",\n    \"sundayOpen\": \"09:00\",\n    \"sundayClose\": \"16:00\"\n  },\n  \"socialMedia\": {\n    \"facebook\": \"facebook.com/coffeehaven\",\n    \"twitter\": \"twitter.com/coffeehaven\",\n    \"instagram\": \"instagram.com/coffeehaven\",\n    \"linkedin\": null\n  },\n  \"images\": [\"https://example.com/image1.jpg\"],\n  \"isVerified\": false,\n  \"isFeatured\": false\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{local_url}}/businesses/2"
+					},
+					"response": []
+				},
+				{
+					"name": "get a businnes",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "{{local_url}}/businesses/1"
+					},
+					"response": []
+				},
+				{
+					"name": "get a businnes detail",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "{{local_url}}/businesses/3/details"
+					},
+					"response": []
+				},
+				{
+					"name": "delete a businness",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "{{local_url}}/businesses/1"
+					},
+					"response": []
+				},
+				{
+					"name": "get all businnes",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "{{local_url}}/businesses"
+					},
+					"response": []
+				},
+				{
+					"name": "search business",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{local_url}}/businesses/search?query=&categoryId=839&locationId",
+							"host": [
+								"{{local_url}}"
+							],
+							"path": [
+								"businesses",
+								"search"
+							],
+							"query": [
+								{
+									"key": "query",
+									"value": ""
+								},
+								{
+									"key": "categoryId",
+									"value": "839"
+								},
+								{
+									"key": "locationId",
+									"value": null
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "featured businesses",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "businesses services",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "businesses reviews",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "businesses owner",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "{{local_url}}/businesses/owner/1"
+					},
+					"response": []
+				},
+				{
+					"name": "businesses logo",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "logo",
+									"type": "file",
+									"src": "postman-cloud:///1ef9850f-f138-4650-9756-cf3bec033981"
+								}
+							]
+						},
+						"url": "{{local_url}}/businesses/3/logo"
+					},
+					"response": []
+				},
+				{
+					"name": "create business services",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "Espresso you to",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "Rich and bold espresso shot",
+									"type": "text"
+								},
+								{
+									"key": "price",
+									"value": "2.50",
+									"type": "text"
+								},
+								{
+									"key": "businessId",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "categoryId",
+									"value": "839",
+									"type": "text"
+								},
+								{
+									"key": "image",
+									"type": "file",
+									"src": "postman-cloud:///1ef98510-2ad2-47d0-96e4-7c1583296d2a"
+								},
+								{
+									"key": "serviceOptionsJson",
+									"value": "[{\"name\":\"Option 1\",\"price\":10.99,\"description\":\"Option description\"},{\"name\":\"Option 2\",\"price\":20.99,\"description\":\"Another option\"}]",
+									"type": "text"
+								},
+								{
+									"key": "available:",
+									"value": "true",
+									"type": "text"
+								}
+							]
+						},
+						"url": "{{local_url}}/businesses/services"
+					},
+					"response": []
+				},
+				{
+					"name": "business list of services",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "{{local_url}}/businesses/services/business/1"
+					},
+					"response": []
+				},
+				{
+					"name": "business services Copy",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "{{local_url}}/businesses/services/1"
+					},
+					"response": []
+				},
+				{
+					"name": "delete business services",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": "{{local_url}}/businesses/services/1"
+					},
+					"response": []
+				},
+				{
+					"name": "create business review",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "review",
+									"value": "{\n  \"businessId\": 1,\n  \"userId\": 4,\n  \"rating\": 4,\n  \"comment\": \"Great coffee!\"\n}",
+									"contentType": "application/json",
+									"type": "text"
+								},
+								{
+									"key": "images",
+									"contentType": "",
+									"type": "file",
+									"src": [
+										"postman-cloud:///1ef98510-2ad2-47d0-96e4-7c1583296d2a",
+										"postman-cloud:///1ef9850f-f138-4650-9756-cf3bec033981"
+									]
+								}
+							]
+						},
+						"url": "{{local_url}}/businesses/reviews"
+					},
+					"response": []
+				},
+				{
+					"name": "a business reviews",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"businessId\": 3,\n  \"userId\": 1,\n  \"rating\": 4,\n  \"comment\": \"Great coffee!\",\n  \"images\": [\"https://example.com/review1.jpg\"]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{local_url}}/businesses/reviews/1"
+					},
+					"response": []
+				},
+				{
+					"name": "List reviews by a user",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"businessId\": 3,\n  \"userId\": 1,\n  \"rating\": 4,\n  \"comment\": \"Great coffee!\",\n  \"images\": [\"https://example.com/review1.jpg\"]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{local_url}}/businesses/reviews/business/3"
+					},
+					"response": []
+				},
+				{
+					"name": "List reviews for a business. Copy",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"businessId\": 3,\n  \"userId\": 1,\n  \"rating\": 4,\n  \"comment\": \"Great coffee!\",\n  \"images\": [\"https://example.com/review1.jpg\"]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{local_url}}/businesses/reviews/business/3"
+					},
+					"response": []
+				},
+				{
+					"name": "delete a business reviews",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"businessId\": 3,\n  \"userId\": 1,\n  \"rating\": 4,\n  \"comment\": \"Great coffee!\",\n  \"images\": [\"https://example.com/review1.jpg\"]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{local_url}}/businesses/reviews/1"
+					},
+					"response": []
+				},
+				{
+					"name": "Business Location",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"Downtown Addis\",\n  \"type\": \"AREA\",\n  \"parentLocationId\": \"\",\n  \"street\": \"123 Main St\",\n    \"city\": \"Addis Ababa\",\n    \"state\": \"Addis Ababa\",\n    \"postalCode\": \"1000\",\n    \"country\": \"Ethiopia\",\n  \"coordinates\": {\n    \"latitude\": 9.03,\n    \"longitude\": 38.74\n  }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{local_url}}/businesses/locations"
+					},
+					"response": []
+				},
+				{
+					"name": "a business Location",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"Downtown Addis\",\n  \"type\": \"AREA\",\n  \"parentLocationId\": \"\",\n  \"street\": \"123 Main St\",\n    \"city\": \"Addis Ababa\",\n    \"state\": \"Addis Ababa\",\n    \"postalCode\": \"1000\",\n    \"country\": \"Ethiopia\",\n  \"coordinates\": {\n    \"latitude\": 9.03,\n    \"longitude\": 38.74\n  }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{local_url}}/businesses/locations/2"
+					},
+					"response": []
+				},
+				{
+					"name": "business Locations",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"Downtown Addis\",\n  \"type\": \"AREA\",\n  \"parentLocationId\": \"\",\n  \"street\": \"123 Main St\",\n    \"city\": \"Addis Ababa\",\n    \"state\": \"Addis Ababa\",\n    \"postalCode\": \"1000\",\n    \"country\": \"Ethiopia\",\n  \"coordinates\": {\n    \"latitude\": 9.03,\n    \"longitude\": 38.74\n  }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{local_url}}/businesses/locations"
+					},
+					"response": []
+				},
+				{
+					"name": "business Locations near",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"Downtown Addis\",\n  \"type\": \"AREA\",\n  \"parentLocationId\": \"\",\n  \"street\": \"123 Main St\",\n    \"city\": \"Addis Ababa\",\n    \"state\": \"Addis Ababa\",\n    \"postalCode\": \"1000\",\n    \"country\": \"Ethiopia\",\n  \"coordinates\": {\n    \"latitude\": 9.03,\n    \"longitude\": 38.74\n  }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{local_url}}/businesses/locations"
+					},
+					"response": []
+				},
+				{
+					"name": "delete a business Location",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"Downtown Addis\",\n  \"type\": \"AREA\",\n  \"parentLocationId\": \"\",\n  \"street\": \"123 Main St\",\n    \"city\": \"Addis Ababa\",\n    \"state\": \"Addis Ababa\",\n    \"postalCode\": \"1000\",\n    \"country\": \"Ethiopia\",\n  \"coordinates\": {\n    \"latitude\": 9.03,\n    \"longitude\": 38.74\n  }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{local_url}}/businesses/locations/2"
+					},
+					"response": []
+				},
+				{
+					"name": "business Location update",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"Downtown Addis\",\n  \"type\": \"AREA\",\n  \"parentLocationId\": \"\",\n  \"street\": \"123 Main St\",\n    \"city\": \"Addis Ababa\",\n    \"state\": \"Addis Ababa\",\n    \"postalCode\": \"1000\",\n    \"country\": \"Ethiopia\",\n  \"coordinates\": {\n    \"latitude\": 9.03,\n    \"longitude\": 38.74\n  }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{local_url}}/businesses/locations/2"
+					},
+					"response": []
+				},
+				{
+					"name": "enquiries",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"businessId\": 3,\n  \"name\": \"Jane Doe\",\n  \"email\": \"jane@example.com\",\n  \"phoneNumber\": \"+251987654321\",\n  \"message\": \"Do you offer vegan options?\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{local_url}}/businesses/enquiries"
+					},
+					"response": []
+				},
+				{
+					"name": "a enquiries",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "{{local_url}}/businesses/enquiries/1"
+					},
+					"response": []
+				},
+				{
+					"name": "update enquiries status",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "{{local_url}}/businesses/enquiries/1"
+					},
+					"response": []
+				},
+				{
+					"name": "enquiries by business",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "{{local_url}}/businesses/enquiries/business/3"
+					},
+					"response": []
+				},
+				{
+					"name": "enquiries by user",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "{{local_url}}/businesses/enquiries/user/3"
+					},
+					"response": []
+				},
+				{
+					"name": "claims",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": "{{local_url}}/businesses/claims"
+					},
+					"response": []
+				},
+				{
+					"name": "a claims",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": "{{local_url}}/businesses/claims"
+					},
+					"response": []
+				},
+				{
+					"name": "List claims for a user",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "{{local_url}}/businesses/claims/business/3"
+					},
+					"response": []
+				},
+				{
+					"name": "List claims for a business Copy",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "{{local_url}}/businesses/claims/business/3"
+					},
+					"response": []
+				},
+				{
+					"name": "Create a promotion",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"businessId\": \"biz123\",\n  \"title\": \"Happy Hour\",\n  \"description\": \"50% off all drinks!\",\n  \"startDate\": \"2025-03-07T14:00:00\",\n  \"endDate\": \"2025-03-07T18:00:00\",\n  \"type\": \"DISCOUNT\",\n  \"discountPercentage\": 50.0\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{local_url}}/businesses/promotions"
+					},
+					"response": []
+				},
+				{
+					"name": "a promotion",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"businessId\": \"biz123\",\n  \"title\": \"Happy Hour\",\n  \"description\": \"50% off all drinks!\",\n  \"startDate\": \"2025-03-07T14:00:00\",\n  \"endDate\": \"2025-03-07T18:00:00\",\n  \"type\": \"DISCOUNT\",\n  \"discountPercentage\": 50.0\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{local_url}}/businesses/promotions/1"
+					},
+					"response": []
+				},
+				{
+					"name": "delete a promotion",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"businessId\": \"biz123\",\n  \"title\": \"Happy Hour\",\n  \"description\": \"50% off all drinks!\",\n  \"startDate\": \"2025-03-07T14:00:00\",\n  \"endDate\": \"2025-03-07T18:00:00\",\n  \"type\": \"DISCOUNT\",\n  \"discountPercentage\": 50.0\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{local_url}}/businesses/promotions/1"
+					},
+					"response": []
+				},
+				{
+					"name": "update a promotion",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"businessId\": \"biz123\",\n  \"title\": \"Happy Hour\",\n  \"description\": \"50% off all drinks!\",\n  \"startDate\": \"2025-03-07T14:00:00\",\n  \"endDate\": \"2025-03-07T18:00:00\",\n  \"type\": \"DISCOUNT\",\n  \"discountPercentage\": 50.0\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{local_url}}/businesses/promotions/1"
+					},
+					"response": []
+				},
+				{
+					"name": "promotions by business",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"businessId\": \"biz123\",\n  \"title\": \"Happy Hour\",\n  \"description\": \"50% off all drinks!\",\n  \"startDate\": \"2025-03-07T14:00:00\",\n  \"endDate\": \"2025-03-07T18:00:00\",\n  \"type\": \"DISCOUNT\",\n  \"discountPercentage\": 50.0\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{local_url}}/businesses/promotions/business/3"
+					},
+					"response": []
+				},
+				{
+					"name": "promotions active Copy",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"businessId\": \"biz123\",\n  \"title\": \"Happy Hour\",\n  \"description\": \"50% off all drinks!\",\n  \"startDate\": \"2025-03-07T14:00:00\",\n  \"endDate\": \"2025-03-07T18:00:00\",\n  \"type\": \"DISCOUNT\",\n  \"discountPercentage\": 50.0\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{local_url}}/businesses/promotions/active"
+					},
+					"response": []
+				},
+				{
+					"name": "a search logs",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"businessId\": \"biz123\",\n  \"title\": \"Happy Hour\",\n  \"description\": \"50% off all drinks!\",\n  \"startDate\": \"2025-03-07T14:00:00\",\n  \"endDate\": \"2025-03-07T18:00:00\",\n  \"type\": \"DISCOUNT\",\n  \"discountPercentage\": 50.0\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{local_url}}/businesses/search-logs/3"
+					},
+					"response": []
+				},
+				{
+					"name": "all search logs",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"businessId\": \"biz123\",\n  \"title\": \"Happy Hour\",\n  \"description\": \"50% off all drinks!\",\n  \"startDate\": \"2025-03-07T14:00:00\",\n  \"endDate\": \"2025-03-07T18:00:00\",\n  \"type\": \"DISCOUNT\",\n  \"discountPercentage\": 50.0\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{local_url}}/businesses/search-logs"
+					},
+					"response": []
+				},
+				{
+					"name": "products",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Order",
+			"item": [
+				{
+					"name": "Create Order",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"businessId\": 1,\n  \"items\": [\n    {\n      \"serviceId\": 1,\n      \"quantity\": 1,\n      \"selectedOptions\": {\n        \"Size\": \"Large\",\n        \"Milk Type\": \"Almond\"\n      },\n      \"notes\": \"Extra hot please\"\n    }\n  ],\n  \"serviceLocationId\": 3,\n  \"paymentMethodId\": 1,\n  \"scheduledDate\": \"2024-03-20T14:30:00\",\n  \"specialInstructions\": \"Please call when arriving\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{local_url}}/orders"
+					},
+					"response": []
+				},
+				{
+					"name": "get single order",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "customer orders",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "{{local_url}}/orders/customer"
+					},
+					"response": []
+				},
+				{
+					"name": "business orders",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "{{local_url}}/orders/business/1"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Tender Agency",
+			"item": [
+				{
+					"name": "Register Agency",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"companyName\": \"Test Agency\",\n    \"tinNumber\": \"TIN123456\",\n    \"website\": \"http://testagency.com\",\n    \"contactPerson\": \"John Doe\",\n    \"email\": \"test@agency.com\",\n    \"password\": \"password123\"\n}"
+						},
+						"url": "{{baseUrl}}/tender-agencies/register"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Agency Profile",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "{{baseUrl}}/tender-agencies/{{agencyId}}/profile"
+					},
+					"response": []
+				},
+				{
+					"name": "Update Agency Profile",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"companyName\": \"Updated Agency\",\n    \"website\": \"http://updatedagency.com\",\n    \"contactPerson\": \"Jane Doe\"\n}"
+						},
+						"url": "{{baseUrl}}/tender-agencies/{{agencyId}}/profile"
+					},
+					"response": []
+				},
+				{
+					"name": "Upload Business License Copy",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "multipart/form-data"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "file",
+									"type": "file",
+									"src": []
+								}
+							]
+						},
+						"url": "{{baseUrl}}/tender-agencies/{{agencyId}}/license"
+					},
+					"response": []
+				},
+				{
+					"name": "Create Tender",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"title\": \"New Tender\",\n    \"description\": \"Tender description\",\n    \"location\": \"Nairobi\",\n    \"closingDate\": \"2025-05-01T12:00:00\",\n    \"contactInfo\": \"contact@tender.com\",\n    \"serviceId\": 1,\n    \"questionDeadline\": \"2025-04-20T12:00:00\"\n}"
+						},
+						"url": "{{baseUrl}}/tender-agencies/{{agencyId}}/tenders"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Agency Tenders Copy",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/tender-agencies/{{agencyId}}/tenders?page=0&size=10&sort=datePosted,desc",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"tender-agencies",
+								"{{agencyId}}",
+								"tenders"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "0"
+								},
+								{
+									"key": "size",
+									"value": "10"
+								},
+								{
+									"key": "sort",
+									"value": "datePosted,desc"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Single Tender Copy",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "{{baseUrl}}/tender-agencies/{{agencyId}}/tenders/{{tenderId}}"
+					},
+					"response": []
+				},
+				{
+					"name": "Update Tender Copy",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"title\": \"Updated Tender\",\n    \"description\": \"Updated description\",\n    \"location\": \"Mombasa\",\n    \"closingDate\": \"2025-05-15T12:00:00\",\n    \"contactInfo\": \"updated@tender.com\",\n    \"questionDeadline\": \"2025-04-25T12:00:00\"\n}"
+						},
+						"url": "{{baseUrl}}/tender-agencies/{{agencyId}}/tenders/{{tenderId}}"
+					},
+					"response": []
+				},
+				{
+					"name": "Upload Tender Document Copy",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "multipart/form-data"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "file",
+									"type": "file",
+									"src": []
+								}
+							]
+						},
+						"url": "{{baseUrl}}/tender-agencies/{{agencyId}}/tenders/{{tenderId}}/documents"
+					},
+					"response": []
+				},
+				{
+					"name": "Change Tender Status Copy",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"status\": \"CLOSED\"\n}"
+						},
+						"url": "{{baseUrl}}/tender-agencies/{{agencyId}}/tenders/{{tenderId}}/status"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Agency Statistics Copy",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "{{baseUrl}}/tender-agencies/{{agencyId}}/statistics"
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Tender Copy",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": "{{baseUrl}}/tender-agencies/{{agencyId}}/tenders/{{tenderId}}"
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "id",
+			"value": "1"
+		},
+		{
+			"key": "base_url",
+			"value": "https://postman-rest-api-learner.glitch.me/"
+		}
+	]
+}
