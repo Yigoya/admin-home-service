@@ -9,7 +9,7 @@ interface ServiceItemProps {
   onToggleExpand: (serviceId: number) => void;
   onEdit: (service: Service) => void;
   onDelete: (serviceId: number) => void;
-  onAddSubService: (parentId: number) => void;
+  onAddSubService: (parentId: number, categoryId: number) => void;
   onAddLanguage: (service: Service) => void;
 }
 
@@ -86,7 +86,7 @@ export default function ServiceItem({
             <GlobeAltIcon className="h-5 w-5" />
           </button>
           <button
-            onClick={() => onAddSubService(service.serviceId || service.id!)}
+            onClick={() => onAddSubService(service.serviceId || service.id!, service.categoryId)}
             className="p-1 text-green-600 hover:bg-green-50 rounded-full"
             title="Add Sub-Service"
           >

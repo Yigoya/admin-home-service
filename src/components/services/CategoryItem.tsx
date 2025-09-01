@@ -13,7 +13,7 @@ interface CategoryItemProps {
   onEditService: (service: any) => void;
   onDeleteService: (serviceId: number) => void;
   onAddService: (categoryId: number) => void;
-  onAddSubService: (parentId: number) => void;
+  onAddSubService: (parentId: number, categoryId: number) => void;
   onAddCategoryLanguage: (category: ServiceCategory) => void;
   onAddServiceLanguage: (service: any) => void;
 }

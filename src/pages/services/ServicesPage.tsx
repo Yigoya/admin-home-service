@@ -90,11 +90,18 @@ export default function ServicesPage() {
     setParentServiceId(null);
   };
   
-  const openAddSubServiceModal = (parentId: number) => {
+  const openAddSubServiceModal = (parentId: number, categoryId: number) => {
     setSelectedService(null);
     setModalTitle('Add Sub-Service');
     setIsServiceModalOpen(true);
     setParentServiceId(parentId);
+        const dummyService: Service = {
+      name: '',
+      description: '',
+      icon: '',
+      categoryId
+    };
+    setSelectedService(dummyService);
   };
   
   const openAddCategoryLanguageModal = (category: ServiceCategory) => {
