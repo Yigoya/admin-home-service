@@ -14,7 +14,7 @@ import {
   StarIcon
 } from "@heroicons/react/24/outline";
 import { bookingsApi } from '../../api';
-import type { Booking, BookingStatus } from '../../types';
+import type { Booking, BookingStatus, ApiResponse } from '../../types';
 import { format, parseISO } from 'date-fns';
 
 // Status badge component
@@ -26,6 +26,7 @@ const StatusBadge = ({ status }: { status: BookingStatus }) => {
     'IN_PROGRESS': { color: 'bg-purple-100 text-purple-800', text: 'In Progress' },
     'COMPLETED': { color: 'bg-green-100 text-green-800', text: 'Completed' },
     'CANCELED': { color: 'bg-gray-100 text-gray-800', text: 'Canceled' },
+    'CANCELLED': { color: 'bg-gray-100 text-gray-800', text: 'Cancelled' },
     'REJECTED': { color: 'bg-red-100 text-red-800', text: 'Rejected' }
   };
 
@@ -53,7 +54,7 @@ const BookingDetailsPage = () => {
     enabled: !!bookingId,
   });
   
-  const booking = data?.data;
+  const booking = (data as ApiResponse<Booking> | undefined)?.data;
   
   // Update booking status mutation
   const updateStatusMutation = useMutation({
@@ -70,7 +71,7 @@ const BookingDetailsPage = () => {
     updateStatusMutation.mutate({ status });
   };
   
-  const formatDate = (dateString: string | null) => {
+  const formatDate = (dateString: string | undefined | null) => {
     if (!dateString) return 'Not scheduled';
     try {
       return format(parseISO(dateString), 'MMM dd, yyyy HH:mm');
@@ -144,7 +145,7 @@ const BookingDetailsPage = () => {
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div>
                 <p className="text-sm font-medium text-gray-500">Service</p>
-                <p className="text-base font-semibold text-gray-900">{booking.service}</p>
+                <p className="text-base font-semibold text-gray-900">{typeof booking.service === 'string' ? booking.service : booking.service?.name ?? 'N/A'}</p>
               </div>
               
               <div>
@@ -245,11 +246,11 @@ const BookingDetailsPage = () => {
             
             <div className="flex items-center">
               <div className="flex-shrink-0 h-12 w-12">
-                {booking.customer.profileImage ? (
+                {booking.customer?.profileImage ? (
                   <img 
                     className="h-12 w-12 rounded-full object-cover" 
-                    src={booking.customer.profileImage} 
-                    alt={booking.customer.name} 
+                    src={booking.customer?.profileImage} 
+                    alt={booking.customer?.name || 'Customer'} 
                   />
                 ) : (
                   <div className="h-12 w-12 rounded-full bg-gray-200 flex items-center justify-center">
@@ -258,9 +259,9 @@ const BookingDetailsPage = () => {
                 )}
               </div>
               <div className="ml-4">
-                <h3 className="text-base font-medium text-gray-900">{booking.customer.name}</h3>
-                {booking.customer.customerId && (
-                  <p className="text-sm text-gray-500">ID: {booking.customer.customerId}</p>
+                <h3 className="text-base font-medium text-gray-900">{booking.customer?.name || 'N/A'}</h3>
+                {booking.customer?.customerId && (
+                  <p className="text-sm text-gray-500">ID: {booking.customer?.customerId}</p>
                 )}
               </div>
             </div>
@@ -268,11 +269,11 @@ const BookingDetailsPage = () => {
             <div className="mt-4 space-y-2">
               <div className="flex items-center">
                 <EnvelopeIcon className="h-5 w-5 text-gray-400 mr-2" />
-                <span className="text-sm text-gray-900">{booking.customer.email}</span>
+                <span className="text-sm text-gray-900">{booking.customer?.email || '—'}</span>
               </div>
               <div className="flex items-center">
                 <PhoneIcon className="h-5 w-5 text-gray-400 mr-2" />
-                <span className="text-sm text-gray-900">{booking.customer.phoneNumber}</span>
+                <span className="text-sm text-gray-900">{booking.customer?.phoneNumber || '—'}</span>
               </div>
             </div>
           </div>

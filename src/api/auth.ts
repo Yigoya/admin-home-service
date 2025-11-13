@@ -1,5 +1,5 @@
 import { api } from './api';
-import type { User, LoginRequest, LoginResponse, PasswordResetRequest, PasswordReset } from '../types';
+import type { User, LoginRequest, LoginResponse, PasswordReset } from '../types';
 import type { ApiResponse } from '../types';
 
 export const authApi = {

@@ -6,7 +6,6 @@ import {
   ArrowPathIcon,
   ChevronLeftIcon,
   ChevronRightIcon,
-  MapPinIcon,
   ClockIcon,
   UserIcon,
   PhoneIcon,
@@ -14,7 +13,7 @@ import {
   WrenchScrewdriverIcon
 } from '@heroicons/react/24/outline';
 import { bookingsApi } from '../../api';
-import type { Booking, BookingStatus } from '../../types';
+import type { Booking, BookingStatus, ApiResponse, PaginatedResponse } from '../../types';
 import { format, parseISO } from 'date-fns';
 import { Link } from 'react-router-dom';
 
@@ -27,6 +26,7 @@ const StatusBadge = ({ status }: { status: BookingStatus }) => {
     'IN_PROGRESS': { color: 'bg-purple-100 text-purple-800', text: 'In Progress' },
     'COMPLETED': { color: 'bg-green-100 text-green-800', text: 'Completed' },
     'CANCELED': { color: 'bg-gray-100 text-gray-800', text: 'Canceled' },
+    'CANCELLED': { color: 'bg-gray-100 text-gray-800', text: 'Cancelled' },
     'REJECTED': { color: 'bg-red-100 text-red-800', text: 'Rejected' }
   };
 
@@ -54,9 +54,10 @@ const BookingsPage = () => {
     placeholderData: (previousData) => previousData
   });
 
-  const bookings = data?.content || [];
-  const totalPages = data?.totalPages || 0;
-  const totalElements = data?.totalElements || 0;
+  const apiData = (data as ApiResponse<PaginatedResponse<Booking>> | undefined)?.data;
+  const bookings = apiData?.content || [];
+  const totalPages = apiData?.totalPages || 0;
+  const totalElements = apiData?.totalElements || 0;
 
   const handlePageChange = (newPage: number) => {
     setPage(newPage);
@@ -230,18 +231,18 @@ const BookingsPage = () => {
               </thead>
               <tbody className="bg-white divide-y divide-gray-200">
                 {bookings.map((booking: Booking) => (
-                  <tr key={booking.bookingId} className="hover:bg-gray-50">
+                  <tr key={(booking as any).bookingId ?? booking.id} className="hover:bg-gray-50">
                     <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
-                      #{booking.bookingId}
+                      #{(booking as any).bookingId ?? booking.id}
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap">
                       <div className="flex items-center">
                         <div className="flex-shrink-0 h-10 w-10">
-                          {booking.customer.profileImage ? (
+                          {booking.customer?.profileImage ? (
                             <img 
                               className="h-10 w-10 rounded-full object-cover" 
-                              src={booking.customer.profileImage} 
-                              alt={booking.customer.name} 
+                              src={booking.customer?.profileImage} 
+                              alt={booking.customer?.name || 'Customer'} 
                             />
                           ) : (
                             <div className="h-10 w-10 rounded-full bg-gray-200 flex items-center justify-center">
@@ -250,20 +251,20 @@ const BookingsPage = () => {
                           )}
                         </div>
                         <div className="ml-4">
-                          <div className="text-sm font-medium text-gray-900">{booking.customer.name}</div>
+                          <div className="text-sm font-medium text-gray-900">{booking.customer?.name || 'N/A'}</div>
                           <div className="flex items-center text-sm text-gray-500">
                             <EnvelopeIcon className="flex-shrink-0 mr-1.5 h-4 w-4 text-gray-400" />
-                            {booking.customer.email}
+                            {booking.customer?.email || '—'}
                           </div>
                           <div className="flex items-center text-sm text-gray-500">
                             <PhoneIcon className="flex-shrink-0 mr-1.5 h-4 w-4 text-gray-400" />
-                            {booking.customer.phoneNumber}
+                            {booking.customer?.phoneNumber || '—'}
                           </div>
                         </div>
                       </div>
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap">
-                      <div className="text-sm text-gray-900">{booking.service}</div>
+                      <div className="text-sm text-gray-900">{typeof booking.service === 'string' ? booking.service : booking.service?.name ?? 'N/A'}</div>
                       <div className="text-sm text-gray-500 line-clamp-1">{booking.description}</div>
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap">
@@ -306,7 +307,7 @@ const BookingsPage = () => {
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                       <Link
-                        to={`/admin/bookings/${booking.bookingId}`}
+                        to={`/admin/bookings/${(booking as any).bookingId ?? booking.id}`}
                         className="text-blue-600 hover:text-blue-900"
                       >
                         View Details

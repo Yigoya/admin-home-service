@@ -1,5 +1,5 @@
 import api from './api';
-import type { ApiResponse, PaginatedResponse } from '../types/index';
+import type { ApiResponse } from '../types/index';
 
 // Language types
 type LanguageOption = 'ENGLISH' | 'AMHARIC' | 'OROMO';

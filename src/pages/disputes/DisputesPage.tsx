@@ -3,7 +3,7 @@ import { useQuery } from '@tanstack/react-query';
 import { useNavigate } from 'react-router-dom';
 import { format } from 'date-fns';
 import { disputesApi } from '../../api/disputes';
-import { DisputeStatus, Dispute } from '../../types';
+import type { DisputeStatus, Dispute, ApiResponse, PaginatedResponse } from '../../types';
 import Pagination from '../../components/ui/Pagination';
 import LoadingSpinner from '../../components/ui/LoadingSpinner';
 
@@ -29,13 +29,14 @@ const DisputesPage = () => {
   const { data: disputesData, isLoading, error, refetch } = useQuery({
     queryKey: ['disputes', currentPage, pageSize, debouncedSearchTerm, selectedStatus],
     queryFn: () => disputesApi.getDisputes(currentPage, pageSize, selectedStatus),
-    keepPreviousData: true
+    placeholderData: (prev) => prev
   });
 
   useEffect(() => {
-    if (disputesData?.data) {
-      setTotalPages(disputesData.data.totalPages);
-      setTotalElements(disputesData.data.totalElements);
+    const data = (disputesData as ApiResponse<PaginatedResponse<Dispute>> | undefined)?.data;
+    if (data) {
+      setTotalPages(data.totalPages);
+      setTotalElements(data.totalElements);
     }
   }, [disputesData]);
 
@@ -49,8 +50,10 @@ const DisputesPage = () => {
     setCurrentPage(0);
   };
 
-  const handleViewDetails = (disputeId: number) => {
-    navigate(`/admin/disputes/${disputeId}`);
+  const handleViewDetails = (disputeId?: number) => {
+    if (typeof disputeId === 'number') {
+      navigate(`/admin/disputes/${disputeId}`);
+    }
   };
 
   // Helper function to get appropriate status badge color
@@ -130,14 +133,14 @@ const DisputesPage = () => {
                   <LoadingSpinner />
                 </td>
               </tr>
-            ) : disputesData?.data.content.length === 0 ? (
+            ) : ((disputesData as ApiResponse<PaginatedResponse<Dispute>> | undefined)?.data?.content.length === 0) ? (
               <tr>
                 <td colSpan={7} className="text-center py-8">No disputes found</td>
               </tr>
             ) : (
-              disputesData?.data.content.map((dispute: Dispute) => (
-                <tr key={dispute.disputeId} className="hover:bg-gray-50">
-                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{dispute.disputeId}</td>
+              ((disputesData as ApiResponse<PaginatedResponse<Dispute>> | undefined)?.data?.content || []).map((dispute: Dispute) => (
+                <tr key={dispute.disputeId ?? (dispute as any).id} className="hover:bg-gray-50">
+                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{dispute.disputeId ?? (dispute as any).id}</td>
                   <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{dispute.reason}</td>
                   <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
                     {dispute.customer?.name || 'N/A'}
@@ -151,11 +154,11 @@ const DisputesPage = () => {
                     </span>
                   </td>
                   <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
-                    {format(new Date(dispute.createdAt), 'MMM dd, yyyy HH:mm')}
+                    {dispute.createdAt ? format(new Date(dispute.createdAt), 'MMM dd, yyyy HH:mm') : '-'}
                   </td>
                   <td className="px-6 py-4 whitespace-nowrap text-sm font-medium">
                     <button
-                      onClick={() => handleViewDetails(dispute.disputeId)}
+                      onClick={() => handleViewDetails(dispute.disputeId ?? (dispute as any).id)}
                       className="text-indigo-600 hover:text-indigo-900"
                     >
                       View Details

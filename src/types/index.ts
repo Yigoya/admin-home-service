@@ -39,6 +39,11 @@ export type LoginResponse = {
 export type Customer = User & {
   preferredLanguage?: string;
   addresses?: Address[];
+  // Additional optional fields used by UI
+  customerId?: number;
+  address?: Address;
+  bookings?: number;
+  services?: Service[];
 };
 
 export type Technician = User & {
@@ -53,6 +58,11 @@ export type Technician = User & {
   verified?: boolean;
   weeklySchedule?: WeeklySchedule;
   ratings?: number;
+  // Additional optional fields used by UI
+  technicianId?: number;
+  address?: Address;
+  rating?: number;
+  completedJobs?: number;
 };
 
 export type Operator = User & {
@@ -117,7 +127,7 @@ export type Booking = {
   customerId: number;
   technicianId: number;
   serviceId: number;
-  status: 'PENDING' | 'ACCEPTED' | 'REJECTED' | 'COMPLETED' | 'CANCELLED';
+  status: 'PENDING' | 'ACCEPTED' | 'REJECTED' | 'COMPLETED' | 'CANCELLED' | 'ASSIGNED' | 'IN_PROGRESS' | 'CANCELED';
   description?: string;
   scheduledDate: string;
   serviceLocation: Address;
@@ -127,7 +137,10 @@ export type Booking = {
   updatedAt: string;
   customer?: Customer;
   technician?: Technician;
-  service?: Service;
+  service?: Service | string;
+  // Additional optional fields used by UI
+  bookingId?: number;
+  review?: { rating?: number; comment?: string; createdAt?: string };
 };
 
 export type Review = {
@@ -151,6 +164,10 @@ export type Dispute = {
   updatedAt: string;
   customer?: Customer;
   booking?: Booking;
+  // Optional fields used by UI
+  disputeId?: number;
+  reason?: string;
+  technician?: Technician;
 };
 
 export type ContactUs = {
@@ -241,6 +258,10 @@ export type PaginatedResponse<T> = {
   numberOfElements: number;
   empty: boolean;
 };
+
+// Convenience exported unions used across pages
+export type BookingStatus = Booking['status'];
+export type DisputeStatus = 'PENDING' | 'IN_REVIEW' | 'RESOLVED' | 'REJECTED' | 'OPEN' | 'IN_PROGRESS';
 
 export type Business = {
   id: number;

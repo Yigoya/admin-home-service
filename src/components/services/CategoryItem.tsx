@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import { ChevronDownIcon, ChevronRightIcon, PencilIcon, PlusIcon, GlobeAltIcon } from '@heroicons/react/24/outline';
 import type { ServiceCategory } from '../../api/services';
 import ServiceItem from './ServiceItem';

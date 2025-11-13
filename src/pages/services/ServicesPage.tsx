@@ -184,7 +184,7 @@ export default function ServicesPage() {
   }
   
   // Access the data property to get the array of categories
-  const categories = (servicesData as ApiResponse<ServiceCategory[]>) || [];
+  const categories: ServiceCategory[] = (servicesData as ApiResponse<ServiceCategory[]> | undefined)?.data ?? [];
   
   return (
     <div className="p-6">

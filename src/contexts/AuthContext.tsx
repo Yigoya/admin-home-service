@@ -32,32 +32,28 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
   const [user, setUser] = useState<User | null>(null);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
-  
+
   useEffect(() => {
     const storedUser = localStorage.getItem('user');
     const token = localStorage.getItem('admin_token');
-    
+
     if (token && storedUser) {
       setUser(JSON.parse(storedUser));
     }
-    
+
     setIsLoading(false);
   }, []);
-  
+
   const login = async (credentials: LoginRequest) => {
     try {
       setIsLoading(true);
       setError(null);
-      
-      const response = await authApi.login(credentials);
-      console.log(response )
-      
 
-      const { token, user } = response;
+      const response = await authApi.login(credentials);
+      const { token, user } = response.data;
       localStorage.setItem('admin_token', token);
       localStorage.setItem('user', JSON.stringify(user));
       setUser(user);
-
     } catch (err) {
       let errorMessage = 'Failed to login. Please check your credentials.';
       if (err instanceof Error) {
@@ -69,7 +65,7 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
       setIsLoading(false);
     }
   };
-  
+
   const logout = async () => {
     try {
       setIsLoading(true);
@@ -86,9 +82,9 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
     try {
       setIsLoading(true);
       setError(null);
-      
+
       const response = await authApi.requestPasswordReset(email);
-      
+
       if (response.success) {
         return true;
       } else {
@@ -111,9 +107,9 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
     try {
       setIsLoading(true);
       setError(null);
-      
+
       const response = await authApi.resetPassword(resetData);
-      
+
       if (response.success) {
         return true;
       } else {
@@ -131,7 +127,7 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
       setIsLoading(false);
     }
   };
-  
+
   const value = {
     user,
     isLoading,
@@ -140,10 +136,10 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
     logout,
     requestPasswordReset,
     resetPassword,
-    error
+    error,
   };
-  
+
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
 };
 
-export default AuthContext; 
+export default AuthContext;

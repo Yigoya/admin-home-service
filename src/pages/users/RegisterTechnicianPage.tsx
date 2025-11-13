@@ -419,8 +419,8 @@ const RegisterTechnicianPage = () => {
               <div className="mt-1 space-y-2">
                 {servicesLoading ? (
                   <div className="text-sm text-gray-500">Loading services...</div>
-                ) : servicesResponse ? (
-                  servicesResponse.map((service: Service) => (
+                ) : servicesResponse?.data && servicesResponse.data.length > 0 ? (
+                  servicesResponse.data.map((service: Service) => (
                     <div key={service.id} className="flex items-center">
                       <input
                         type="checkbox"

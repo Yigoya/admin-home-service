@@ -165,7 +165,7 @@ export function useServicesData(language: LanguageOption = 'ENGLISH') {
   }, [servicesData?.data, findCategoryById]);
 
   return {
-    servicesData: servicesData || [],
+    servicesData,
     isLoading,
     isError,
     error,
